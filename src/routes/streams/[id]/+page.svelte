@@ -4,6 +4,7 @@
 	import { toneOf } from '#lib/catalog.ts';
 	import Scene from '#lib/components/Scene.svelte';
 	import StreamGrid from '#lib/components/StreamGrid.svelte';
+	import { REPO_URL, SITE_URL } from '#lib/config.ts';
 	import { embedUrl } from '#lib/embed.ts';
 	import { PERMISSION_LABELS } from '#lib/types.ts';
 	import type { PageProps } from './$types';
@@ -32,6 +33,21 @@
 			{ k: 'Shown here', v: PERMISSION_LABELS[stream.permission] }
 		].filter((d) => d.v)
 	);
+
+	// Opens a new GitHub issue with the stream already named, so reports are easy to act on.
+	const reportUrl = $derived.by(() => {
+		const body = [
+			`**Stream:** ${stream.title} (\`${stream.id}\`)`,
+			`**Page:** ${SITE_URL}/streams/${stream.id}`,
+			`**Source:** ${stream.sourceUrl}`,
+			'',
+			"**What's wrong?**",
+			'<!-- For example: offline for days, wrong habitat or region, not nature, shows people. -->',
+			''
+		].join('\n');
+		const params = new URLSearchParams({ title: `Problem with stream: ${stream.title}`, body });
+		return `${REPO_URL}/issues/new?${params}`;
+	});
 
 	let copied = $state(false);
 	async function copyEmbed() {
@@ -142,11 +158,9 @@
 						{copied ? 'Copied' : 'Copy embed code'}
 					</button>
 				{/if}
-				<a
-					rel="external"
-					href="mailto:?subject={encodeURIComponent(`Problem with ${stream.title}`)}"
-					class="btn-quiet">Report a problem</a
-				>
+				<a href={reportUrl} rel="external noopener" target="_blank" class="btn-quiet">
+					Report a problem
+				</a>
 			</div>
 		</div>
 
