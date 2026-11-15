@@ -10,8 +10,13 @@
 			label: 'Watch live',
 			match: (p: string) => p.startsWith('/streams')
 		},
-		{ href: resolve('/#people'), label: 'The people', match: () => false },
-		{ href: resolve('/reuse'), label: 'Reuse', match: (p: string) => p.startsWith('/reuse') }
+		{
+			href: resolve('/#people'),
+			label: 'The people',
+			match: (p: string) => p.startsWith('/hosts')
+		},
+		{ href: resolve('/reuse'), label: 'Reuse', match: (p: string) => p.startsWith('/reuse') },
+		{ href: resolve('/signin'), label: 'Sign in', match: (p: string) => p.startsWith('/signin') }
 	];
 </script>
 

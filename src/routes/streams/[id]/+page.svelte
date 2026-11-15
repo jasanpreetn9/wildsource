@@ -159,6 +159,9 @@
 						</div>
 					</div>
 					<p class="m-0">{host.quote}</p>
+					<a href={resolve('/hosts/[id]', { id: host.id })} class="py-2 font-bold text-link">
+						See all cameras by {host.name}
+					</a>
 				</div>
 			{/if}
 			<div class="flex flex-col gap-3.5 rounded-[20px] border border-line bg-surface p-6">

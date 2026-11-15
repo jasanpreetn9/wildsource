@@ -85,7 +85,10 @@
 	</div>
 	<div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
 		{#each hosts as host (host.id)}
-			<div class="flex flex-col gap-3.5 rounded-[20px] border border-line bg-surface p-7">
+			<a
+				href={resolve('/hosts/[id]', { id: host.id })}
+				class="flex flex-col gap-3.5 rounded-[20px] border border-line bg-surface p-7 text-ink no-underline"
+			>
 				<span
 					aria-hidden="true"
 					class="size-14 rounded-full"
@@ -94,7 +97,7 @@
 				<span class="font-display text-[22px] font-semibold">{host.name}</span>
 				<span class="text-[15px] text-muted">{host.camType} · {host.region}</span>
 				<p class="m-0">{host.quote}</p>
-			</div>
+			</a>
 		{/each}
 	</div>
 </section>
