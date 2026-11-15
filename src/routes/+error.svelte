@@ -2,8 +2,8 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { streams } from '#lib/catalog.ts';
-	import Scene from '#lib/components/Scene.svelte';
 	import StreamGrid from '#lib/components/StreamGrid.svelte';
+	import { pasture, PHOTO_CREDIT } from '#lib/photos.ts';
 
 	const notFound = $derived(page.status === 404);
 	const live = streams.filter((s) => s.live).slice(0, 3);
@@ -34,9 +34,16 @@
 			<a href={resolve('/streams')} class="btn-outline">Browse every stream</a>
 		</div>
 	</div>
-	<div class="relative aspect-[4/3] min-w-0 flex-[1_1_360px] overflow-hidden rounded-3xl">
-		<Scene tone={0} variant="hero" />
-	</div>
+	<figure class="m-0 flex min-w-0 flex-[1_1_360px] flex-col gap-2.5">
+		<img
+			src={pasture.src}
+			alt={pasture.alt}
+			width={pasture.width}
+			height={pasture.height}
+			class="aspect-[4/3] h-auto w-full rounded-3xl object-cover object-right-bottom"
+		/>
+		<figcaption class="text-right text-[13px] text-muted">{PHOTO_CREDIT}</figcaption>
+	</figure>
 </section>
 
 <section class="container-page flex flex-col gap-7 pt-6 pb-[88px]">

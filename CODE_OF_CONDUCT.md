@@ -22,4 +22,6 @@ Maintainers may remove comments, issues, streams or contributions that violate t
 
 ## Reporting
 
-Report problems to the maintainers by email at `conduct@example.org` (replace this address before publishing the project). Reports are kept confidential.
+Report problems by [opening an issue](https://github.com/jasanpreetn9/wildsource/issues/new) on the WildSource repository, or by mentioning the maintainer, [@jasanpreetn9](https://github.com/jasanpreetn9).
+
+If the report is sensitive, don't put the details in a public issue. Open an issue that only asks the maintainer to contact you privately, and they will reply to arrange a private channel. Reports are kept confidential.

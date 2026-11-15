@@ -14,7 +14,8 @@ export interface Stream {
 	live: boolean;
 	/** ISO date the stream was last seen live, when it is offline. */
 	lastLive?: string;
-	camera: string;
+	/** Camera model, when the owner has told us. */
+	camera?: string;
 	/** ISO date the stream joined the catalog. */
 	added: string;
 	/**
@@ -39,6 +40,9 @@ export interface Host {
 	region: string;
 	since: number;
 	camType: string;
-	quote: string;
-	bio: string;
+	/** Their own site or channel, linked as credit. */
+	url: string;
+	/** Only in the host's own words. Leave out rather than writing one for them. */
+	quote?: string;
+	bio?: string;
 }

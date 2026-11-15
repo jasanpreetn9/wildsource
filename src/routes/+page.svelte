@@ -2,11 +2,10 @@
 	import { resolve } from '$app/paths';
 	import { hosts, hostToneOf, streams } from '#lib/catalog.ts';
 	import CtaBand from '#lib/components/CtaBand.svelte';
-	import Scene from '#lib/components/Scene.svelte';
 	import StreamGrid from '#lib/components/StreamGrid.svelte';
+	import { alps, PHOTO_CREDIT, sunflower, swan } from '#lib/photos.ts';
 
 	const live = streams.filter((s) => s.live);
-	const featured = live[0];
 
 	const steps = [
 		{ title: 'Find a stream', body: 'Browse cameras by habitat and see which are live right now.' },
@@ -42,27 +41,34 @@
 		</div>
 	</div>
 
-	<div class="grid min-w-0 flex-[1_1_480px] grid-cols-[1.4fr_1fr] gap-4">
-		{#if featured}
-			<a
-				href={resolve('/streams/[id]', { id: featured.id })}
-				class="relative row-span-2 flex min-h-[clamp(240px,40vw,360px)] items-end overflow-hidden rounded-[22px] no-underline"
-			>
-				<Scene tone={0} variant="hero" />
-				<span
-					class="relative m-4 rounded-full bg-pill px-3 py-1.5 text-[13px] font-bold text-pill-ink"
-				>
-					Live · {featured.title}
-				</span>
-			</a>
-		{/if}
-		<div class="relative min-h-[172px] overflow-hidden rounded-[22px]">
-			<Scene tone={1} variant="small" />
+	<figure class="m-0 flex min-w-0 flex-[1_1_480px] flex-col gap-2.5">
+		<!--
+			Tiles keep each photo's own shape, so the watermark in the bottom-right corner
+			isn't cropped off. Phones: swan full width, the other two side by side below.
+			Wider: swan on the left spanning both rows. The 1.2fr/1fr split makes the swan's
+			4:5 height match the two 4:3 tiles, and object-right-bottom anchors any small crop.
+		-->
+		<div class="grid grid-cols-2 gap-4 sm:grid-cols-[1.2fr_1fr]">
+			<img
+				src={swan.src}
+				alt={swan.alt}
+				width={swan.width}
+				height={swan.height}
+				fetchpriority="high"
+				class="col-span-2 aspect-[4/5] h-auto w-full rounded-[22px] object-cover object-right-bottom sm:col-span-1 sm:row-span-2 sm:aspect-auto sm:h-full"
+			/>
+			{#each [alps, sunflower] as photo (photo.src)}
+				<img
+					src={photo.src}
+					alt={photo.alt}
+					width={photo.width}
+					height={photo.height}
+					class="aspect-[4/3] h-auto w-full rounded-[22px] object-cover object-right-bottom"
+				/>
+			{/each}
 		</div>
-		<div class="relative min-h-[172px] overflow-hidden rounded-[22px]">
-			<Scene tone={2} variant="small" />
-		</div>
-	</div>
+		<figcaption class="text-right text-[13px] text-muted">{PHOTO_CREDIT}</figcaption>
+	</figure>
 </section>
 
 <section class="bg-surface">
@@ -96,7 +102,10 @@
 				></span>
 				<span class="font-display text-[22px] font-semibold">{host.name}</span>
 				<span class="text-[15px] text-muted">{host.camType} · {host.region}</span>
-				<p class="m-0">{host.quote}</p>
+				{#if host.quote}
+					<p class="m-0">{host.quote}</p>
+				{/if}
+				<!-- The whole card links to the profile, which has the "Visit" link (links can't nest). -->
 			</a>
 		{/each}
 	</div>

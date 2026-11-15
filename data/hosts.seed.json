@@ -1,29 +1,26 @@
 [
 	{
-		"id": "example-host-a",
-		"name": "Example host A",
-		"region": "Example, US",
+		"id": "cornell-lab",
+		"name": "Cornell Lab Bird Cams",
+		"region": "New York, US",
 		"since": 2026,
-		"camType": "Porch feeder cam",
-		"quote": "Placeholder: one line from the host about why they run this camera.",
-		"bio": "Placeholder: a short note from the host about who they are and why they keep these cameras running."
+		"camType": "Bird feeder and nest cams",
+		"url": "https://www.youtube.com/@cornellbirdcams"
 	},
 	{
-		"id": "example-host-b",
-		"name": "Example host B",
-		"region": "Example, US",
+		"id": "namibiacam",
+		"name": "NamibiaCam",
+		"region": "Namibia",
 		"since": 2026,
-		"camType": "Pond cam",
-		"quote": "Placeholder: one line from the host about why they run this camera.",
-		"bio": "Placeholder: a short note from the host."
+		"camType": "Desert and waterhole cams",
+		"url": "https://www.youtube.com/@NamibiaCam"
 	},
 	{
-		"id": "example-host-c",
-		"name": "Example host C",
-		"region": "Example, US",
+		"id": "explore-org",
+		"name": "explore.org",
+		"region": "Worldwide",
 		"since": 2026,
-		"camType": "Barn nest box cam",
-		"quote": "Placeholder: one line from the host about why they run this camera.",
-		"bio": "Placeholder: a short note from the host."
+		"camType": "Wildlife cams",
+		"url": "https://www.youtube.com/@ExploreLiveNatureCams"
 	}
 ]

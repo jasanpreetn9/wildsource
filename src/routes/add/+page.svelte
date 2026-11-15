@@ -37,9 +37,19 @@
 	]);
 
 	// v0.1: submissions are reviewed as GitHub issues (see ROADMAP.md).
+	// Opens the "Add a stream" issue form (.github/ISSUE_TEMPLATE/add-stream.yml) with its
+	// fields filled in. Each key below is a field id in that template, so keep them in sync.
 	const issueUrl = $derived.by(() => {
-		const body = rows.map((r) => `**${r.k}:** ${r.v}`).join('\n');
-		const params = new URLSearchParams({ title: `Add stream: ${form.name}`, body });
+		const params = new URLSearchParams({
+			template: 'add-stream.yml',
+			title: `Add stream: ${form.name.trim()}`,
+			'stream-link': form.stream.trim(),
+			'camera-name': form.name.trim(),
+			habitat: form.habitat,
+			region: form.region.trim(),
+			about: form.about.trim(),
+			credit: form.host.trim()
+		});
 		return `${REPO_URL}/issues/new?${params}`;
 	});
 

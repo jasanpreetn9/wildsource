@@ -84,6 +84,10 @@ curl {catalogUrl}
 		own player, and you should do the same. If you want to record, download or rebroadcast a stream,
 		ask its owner.
 	</p>
+	<p class="m-0 max-w-[720px] text-lg text-pretty">
+		The photographs on this site are © Jasanpreet Nagra, all rights reserved. They are not part of
+		the catalog or the open source code, and can’t be reused without permission.
+	</p>
 </section>
 
 <CtaBand

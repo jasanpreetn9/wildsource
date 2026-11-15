@@ -25,9 +25,14 @@
 			{host.name}
 		</h1>
 		<span class="text-muted">{host.region} · Hosting since {host.since}</span>
-		<p class="m-0 max-w-[700px] text-[19px] text-pretty">{host.bio}</p>
+		{#if host.bio}
+			<p class="m-0 max-w-[700px] text-[19px] text-pretty">{host.bio}</p>
+		{/if}
 	</div>
-	<button type="button" onclick={share} class="btn-quiet">Share profile</button>
+	<div class="flex flex-wrap gap-3">
+		<a href={host.url} rel="external" class="btn-outline">Visit {host.name}</a>
+		<button type="button" onclick={share} class="btn-quiet">Share profile</button>
+	</div>
 </section>
 
 <section class="container-page flex flex-col gap-7 pt-6 pb-[72px]">

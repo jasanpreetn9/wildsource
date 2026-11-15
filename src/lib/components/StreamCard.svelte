@@ -1,12 +1,22 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { getHost, toneOf } from '#lib/catalog.ts';
+	import { thumbnail } from '#lib/embed.ts';
 	import type { Stream } from '#lib/types.ts';
 	import Scene from './Scene.svelte';
 
 	let { stream, onBg = false }: { stream: Stream; onBg?: boolean } = $props();
 
 	const host = $derived(getHost(stream.hostId));
+	const thumb = $derived(thumbnail(stream));
+
+	// If the image fails, fall back to the illustration underneath.
+	let failed = $state(false);
+
+	function checkLoaded(event: Event) {
+		// For a video that no longer exists, YouTube still sends a tiny 120px grey image.
+		if ((event.currentTarget as HTMLImageElement).naturalWidth <= 120) failed = true;
+	}
 </script>
 
 <a
@@ -17,7 +27,21 @@
 	]}
 >
 	<div class="relative aspect-video">
+		<!-- The illustration sits underneath, so it shows while the image loads or if it fails. -->
 		<Scene tone={toneOf(stream)} />
+		{#if thumb && !failed}
+			<img
+				src={thumb.src}
+				srcset={thumb.srcset}
+				sizes="(min-width: 1100px) 400px, (min-width: 760px) 50vw, 100vw"
+				alt=""
+				loading="lazy"
+				decoding="async"
+				onload={checkLoaded}
+				onerror={() => (failed = true)}
+				class="absolute inset-0 size-full object-cover"
+			/>
+		{/if}
 		<span
 			class="absolute top-3 left-3 rounded-full bg-pill px-2.5 py-1 text-xs font-bold text-pill-ink"
 		>

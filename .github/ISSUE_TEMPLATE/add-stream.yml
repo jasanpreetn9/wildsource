@@ -1,0 +1,93 @@
+name: Add a stream
+description: Suggest a live nature stream for the WildSource catalog.
+title: 'Add stream: '
+labels: ['stream submission']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a stream! A volunteer will review it before it joins the catalog.
+        Please read the [submission rules](../blob/v0.1/docs/submission-rules.md) first.
+
+  # The field ids below match the query parameters the site's "Add a camera" page
+  # fills in (src/routes/add/+page.svelte). Change them in both places.
+  - type: input
+    id: stream-link
+    attributes:
+      label: Stream link
+      description: A public link to the live stream, for example a YouTube link.
+      placeholder: https://www.youtube.com/watch?v=...
+    validations:
+      required: true
+
+  - type: input
+    id: camera-name
+    attributes:
+      label: Camera name
+      description: What people will see in the catalog.
+      placeholder: e.g. Porch feeder cam
+    validations:
+      required: true
+
+  - type: dropdown
+    id: habitat
+    attributes:
+      label: Habitat
+      options:
+        - Woodland
+        - Wetland
+        - Birds
+        - Grassland
+        - Marine
+        - Garden
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: region
+    attributes:
+      label: Region
+      description: >-
+        A town, park, state or country. Keep it general, and never give the exact
+        location of a nest, den or at-risk species.
+      placeholder: e.g. Montana, US
+
+  - type: textarea
+    id: about
+    attributes:
+      label: About this camera
+      description: What does it watch, and what should people look for? Use your own words.
+
+  - type: input
+    id: credit
+    attributes:
+      label: Who runs this camera?
+      description: The name to credit as the host, and a link to their site or channel if they have one.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Your relationship to the camera
+      options:
+        - I run this camera
+        - I asked the owner and they said yes
+        - I found it; the owner hasn't been asked
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Checklist
+      options:
+        - label: It shows nature or wildlife, and it's live.
+          required: true
+        - label: No identifiable people, license plates or private homes are in view.
+          required: true
+        - label: The owner allows embedding (on YouTube, Share → Embed works).
+          required: true
+        - label: The region doesn't reveal the exact location of a nest, den or at-risk species.
+          required: true
