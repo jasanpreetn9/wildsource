@@ -1,16 +1,21 @@
 <!--
 	A small sketched badge for a host card, picked from the kind of cameras they run.
 	`tone` picks the circle colour from the same palette as the stream tiles.
+	It is 64px by default; pass a size class (e.g. "size-[120px]") to change it.
 -->
 <script lang="ts">
-	let { camType, tone = 0 }: { camType: string; tone?: number } = $props();
+	let {
+		camType,
+		tone = 0,
+		class: className = 'size-16'
+	}: { camType: string; tone?: number; class?: string } = $props();
 
 	const kind = $derived(
 		/bird/i.test(camType) ? 'bird' : /desert|waterhole/i.test(camType) ? 'desert' : 'paw'
 	);
 </script>
 
-<svg viewBox="0 0 64 64" aria-hidden="true" class="size-16 flex-none">
+<svg viewBox="0 0 64 64" aria-hidden="true" class={['flex-none', className]}>
 	<circle cx="32" cy="32" r="30" style="fill: var(--tile-{tone}-sky)" />
 	<g
 		filter="url(#rough)"

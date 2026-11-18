@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { hostToneOf } from '#lib/catalog.ts';
+	import HostIcon from '#lib/components/HostIcon.svelte';
 	import StreamGrid from '#lib/components/StreamGrid.svelte';
 	import type { PageProps } from './$types';
 
@@ -19,7 +20,7 @@
 </svelte:head>
 
 <section class="container-page flex flex-wrap items-center gap-8 pt-10 pb-14">
-	<span aria-hidden="true" class="size-[120px] flex-none rounded-full bg-avatar"></span>
+	<HostIcon camType={host.camType} tone={hostToneOf(host)} class="size-[120px]" />
 	<div class="flex min-w-0 flex-[1_1_420px] flex-col gap-3">
 		<h1 class="m-0 font-display text-[clamp(32px,7vw,52px)] leading-[1.05] font-semibold text-head">
 			{host.name}
@@ -50,11 +51,7 @@
 						href={resolve('/hosts/[id]', { id: other.id })}
 						class="flex items-center gap-4 rounded-[20px] border border-line bg-surface p-5 text-ink no-underline"
 					>
-						<span
-							aria-hidden="true"
-							class="size-[52px] flex-none rounded-full"
-							style="background: var(--tile-{hostToneOf(other)}-sky)"
-						></span>
+						<HostIcon camType={other.camType} tone={hostToneOf(other)} class="size-[52px]" />
 						<div class="flex flex-col">
 							<span class="font-display text-xl font-semibold">{other.name}</span>
 							<span class="text-sm text-muted">{other.camType} · {other.region}</span>
