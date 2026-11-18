@@ -2,7 +2,7 @@
 
 Copyright © 2026 Jasanpreet Nagra. All rights reserved.
 
-The photographs in this folder are **not** covered by the MIT License that applies
+The photographs in this folder are **not** covered by the CC BY-NC-SA 4.0 License that applies
 to the rest of this repository, and they are **not** part of the open WildSource
 catalog data.
 

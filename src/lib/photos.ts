@@ -1,5 +1,5 @@
 // Site photos. © Jasanpreet Nagra, all rights reserved: NOT covered by the
-// MIT License and not part of the open catalog data.
+// CC BY-NC-SA 4.0 License and not part of the open catalog data.
 // See src/lib/assets/photos/LICENSE.md.
 //
 // Before adding a photo: strip its metadata (GPS especially), and keep the

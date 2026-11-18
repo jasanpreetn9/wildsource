@@ -99,8 +99,14 @@ Contributions are welcome. You can submit streams or code. See [CONTRIBUTING.md]
 
 ## License
 
-The WildSource code is released under the [MIT License](LICENSE), with one exception:
+WildSource is free to use, change and share for non-commercial purposes under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](LICENSE) (CC BY-NC-SA 4.0). In short:
 
-- **Photos in `src/lib/assets/photos/`** are © Jasanpreet Nagra, all rights reserved. They are not covered by the MIT License and may not be reused without permission. See [their license](src/lib/assets/photos/LICENSE.md).
+- **Credit** WildSource when you use it.
+- **No commercial use.** You may not sell it, charge for access to it, run it with ads or a paywall, or use it in a paid product or service.
+- **Share alike.** If you change it, you must release your version under the same license so it stays free.
+
+There is one exception:
+
+- **Photos in `src/lib/assets/photos/`** are © Jasanpreet Nagra, all rights reserved. They are not covered by the CC BY-NC-SA 4.0 License and may not be reused without permission. See [their license](src/lib/assets/photos/LICENSE.md).
 
 The catalog data (stream names, habitats, regions and links) is free to reuse. Live streams belong to the people and organisations who run them. WildSource only shows them through their owners' own players.
