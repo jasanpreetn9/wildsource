@@ -18,7 +18,7 @@ WildSource collects live nature cameras in one place: big projects like bird and
 ## Features (v0.1)
 
 - Home page with streams that are live right now
-- Catalog with habitat filters, search and sorting
+- Catalog with habitat and region filters, search and sorting
 - A page for each stream, with an embedded player and credit to its owner
 - "Add a camera" form that opens a pre-filled GitHub issue for review
 - The whole catalog as JSON at `/api/streams.json`
@@ -82,7 +82,7 @@ Until v0.2 adds a database, streams are added by editing `data/streams.seed.json
 2. If the camera's owner isn't in `data/hosts.seed.json` yet, add them there.
 3. Add the stream to `data/streams.seed.json`. `habitat` must be one of the values in `src/lib/types.ts`.
 4. Set `permission` to `embed-allowed`, or to `owner-approved` once the owner has said yes.
-5. Keep `region` general, such as a state or country, especially for nests.
+5. Keep `region` general, especially for nests, and always **end it with the country**: `Montana, US`, `Etosha, Namibia`, or just `Panama`. The region filter reads the country from the last part.
 
 Write the description yourself rather than copying the owner's text.
 

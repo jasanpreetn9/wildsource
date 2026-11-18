@@ -49,8 +49,8 @@ body:
     attributes:
       label: Region
       description: >-
-        A town, park, state or country. Keep it general, and never give the exact
-        location of a nest, den or at-risk species.
+        A town, park or state, ending with the country. Keep it general, and never
+        give the exact location of a nest, den or at-risk species.
       placeholder: e.g. Montana, US
 
   - type: textarea

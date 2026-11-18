@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { streams } from '#lib/catalog.ts';
+	import { countries, countryOf, streams } from '#lib/catalog.ts';
 	import CtaBand from '#lib/components/CtaBand.svelte';
 	import StreamGrid from '#lib/components/StreamGrid.svelte';
 	import { HABITATS } from '#lib/types.ts';
@@ -10,6 +10,7 @@
 	type Sort = 'live' | 'newest' | 'az';
 
 	let habitat = $state<string>('All');
+	let country = $state(''); // '' means every region
 	let query = $state('');
 	let sort = $state<Sort>('live');
 	let limit = $state(PAGE_SIZE);
@@ -19,6 +20,7 @@
 		const filtered = streams.filter(
 			(s) =>
 				(habitat === 'All' || s.habitat === habitat) &&
+				(!country || countryOf(s) === country) &&
 				(!q || `${s.title} ${s.habitat} ${s.region}`.toLowerCase().includes(q))
 		);
 		return filtered.toSorted((a, b) => {
@@ -32,6 +34,7 @@
 
 	function clear() {
 		habitat = 'All';
+		country = '';
 		query = '';
 	}
 </script>
@@ -45,8 +48,8 @@
 		Every stream
 	</h1>
 	<p class="m-0 max-w-[640px] text-[19px] text-pretty text-muted">
-		Cameras kept by ordinary people, from every kind of habitat. Filter by habitat or search by
-		name.
+		Cameras kept by ordinary people, from every kind of habitat. Filter by habitat or region, or
+		search by name.
 	</p>
 </section>
 
@@ -71,21 +74,40 @@
 				</button>
 			{/each}
 		</div>
-		<div class="flex flex-wrap items-center gap-3">
-			<label for="q" class="text-[15px] font-semibold">Search</label>
-			<input
-				id="q"
-				type="search"
-				bind:value={query}
-				placeholder="Name or habitat"
-				class="field min-h-[46px] w-[220px] max-w-full text-base"
-			/>
-			<label for="sort" class="text-[15px] font-semibold">Sort</label>
-			<select id="sort" bind:value={sort} class="field min-h-[46px] w-auto px-3 text-base">
-				<option value="live">Live now first</option>
-				<option value="newest">Newest</option>
-				<option value="az">A to Z</option>
-			</select>
+		<!-- Each label stays with its control when the row wraps on narrow screens. -->
+		<div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+			<div class="flex items-center gap-2.5">
+				<label for="q" class="text-[15px] font-semibold">Search</label>
+				<input
+					id="q"
+					type="search"
+					bind:value={query}
+					placeholder="Name, habitat or place"
+					class="field min-h-[46px] w-[220px] max-w-full text-base"
+				/>
+			</div>
+			<div class="flex items-center gap-2.5">
+				<label for="region" class="text-[15px] font-semibold">Region</label>
+				<select
+					id="region"
+					bind:value={country}
+					onchange={() => (limit = PAGE_SIZE)}
+					class="field min-h-[46px] w-auto px-3 text-base"
+				>
+					<option value="">All regions</option>
+					{#each countries as c (c)}
+						<option value={c}>{c}</option>
+					{/each}
+				</select>
+			</div>
+			<div class="flex items-center gap-2.5">
+				<label for="sort" class="text-[15px] font-semibold">Sort</label>
+				<select id="sort" bind:value={sort} class="field min-h-[46px] w-auto px-3 text-base">
+					<option value="live">Live now first</option>
+					<option value="newest">Newest</option>
+					<option value="az">A to Z</option>
+				</select>
+			</div>
 		</div>
 	</div>
 	<span class="text-[15px] text-muted" aria-live="polite">

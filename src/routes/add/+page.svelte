@@ -136,7 +136,8 @@
 			<TextField
 				id="region"
 				label="Region"
-				hint="A town, park or area. Keep it as general as you like."
+				placeholder="e.g. Montana, US"
+				hint="A town, park or area, ending with the country. Keep it as general as you like."
 				bind:value={form.region}
 			/>
 			<TextField

@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { page } from '$app/state';
 	import CtaBand from '#lib/components/CtaBand.svelte';
-	import { REPO_URL } from '#lib/config.ts';
+	import { REPO_URL, SITE_URL } from '#lib/config.ts';
 
 	const uses = [
 		{ title: 'In a classroom', body: 'Put a live habitat on the screen while you teach.' },
@@ -11,7 +10,8 @@
 		{ title: 'On a wall display', body: 'Turn any screen into a window on the wild.' }
 	];
 
-	const catalogUrl = $derived(`${page.url.origin}/api/streams.json`);
+	// Always the public address, even when running locally, since people copy this command.
+	const catalogUrl = `${SITE_URL}/api/streams.json`;
 </script>
 
 <svelte:head>

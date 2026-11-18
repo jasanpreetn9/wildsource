@@ -2,12 +2,17 @@
 
 ## v0.1: Catalog (MVP)
 
-- [ ] Map and grid of embedded streams
-- [ ] Filters: habitat, region, species
-- [ ] Stream detail page with source link and credit
-- [ ] Submission via GitHub issue (manual review)
-- [ ] Seed catalog of 30-50 public nature streams
-- [ ] Open JSON export of the catalog
+- [x] Grid of embedded streams, with live thumbnails
+- [ ] Map of streams
+- [x] Filter by habitat, plus search and sorting
+- [x] Filter by region (by country)
+- [ ] Filter by species (streams don't have species data yet)
+- [x] Stream detail page with source link and credit
+- [x] Submission via GitHub issue (manual review)
+- [ ] Seed catalog of 30-50 public nature streams (13 so far)
+- [x] Open JSON export of the catalog (`/api/streams.json`)
+- [x] Light and dark themes
+- [x] Sitemap
 
 ## v0.2: Database and submissions
 
@@ -39,5 +44,7 @@
 - Species tagging and export to iNaturalist and eBird
 - Federation between WildSource instances
 - Direct stream hosting via an open source media server
+- Public photo sharing: anyone can upload their nature photos and publish them on WildSource for everyone to see (builds on the v0.4 community uploads)
+- Interactive photo map: browse published photos by where they were taken. Locations are shown only approximately, and never pinpoint nests, dens or at-risk species.
 
 Items may change. Open an issue to propose or discuss anything here.
