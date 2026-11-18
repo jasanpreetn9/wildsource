@@ -23,7 +23,7 @@
 <button
 	type="button"
 	onclick={toggle}
-	class="inline-flex min-h-11 cursor-pointer items-center rounded-xl border-[1.5px] border-line bg-transparent px-4 font-sans text-sm font-semibold text-ink"
+	class="inline-flex min-h-11 cursor-pointer items-center rounded-full border-[1.5px] border-line bg-transparent px-4 font-sans text-sm font-semibold text-ink"
 >
 	{theme === 'dark' ? 'Light theme' : 'Dark theme'}
 </button>

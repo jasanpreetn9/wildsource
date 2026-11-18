@@ -4,70 +4,104 @@
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 /*
- * Design tokens from the "Field Notes" identity.
+ * Design tokens from the "Field Notes" identity: warm paper, moss and sage, ochre.
  * Each colour is a CSS variable so light and dark can swap values,
  * then exposed to Tailwind as utilities (bg-bg, text-ink, border-line, ...).
  */
 :root {
-	--c-bg: #f4f6ef;
-	--c-surface: #ffffff;
-	--c-surface2: #e6eedf;
-	--c-ink: #1f2a1e;
-	--c-head: #1f3a27;
-	--c-muted: #435242;
-	--c-primary: #2f5d3a;
-	--c-on-primary: #ffffff;
-	--c-link: #2f5d3a;
-	--c-accent: #f1c84b;
-	--c-on-accent: #1f2a1e;
-	--c-line: #cbd6c4;
-	--c-band: #1f3a27;
-	--c-on-band: #f4f6ef;
-	--c-band-muted: #d5e2d2;
-	--c-field: #ffffff;
-	--c-avatar: #cfe0cc;
-	--c-pill: #ffffff;
-	--c-pill-ink: #1f2a1e;
-	--c-code-bg: #1f3a27;
+	--c-bg: #f5eee2;
+	--c-surface: #fbf7ef;
+	--c-surface2: #efe5d4;
+	--c-ink: #2b2a24;
+	--c-head: #2e3a2e;
+	--c-muted: #5d5a4e;
+	--c-primary: #4f6a4b;
+	--c-on-primary: #fbf7ef;
+	--c-link: #4f6a4b;
+	--c-accent: #c4923a;
+	--c-on-accent: #2b2a24;
+	--c-line: #d9ccb4;
+	/* Form inputs need a stronger edge than decorative borders (3:1, WCAG 1.4.11). */
+	--c-field-line: #93866c;
+	--c-band: #34433a;
+	--c-on-band: #f5eee2;
+	--c-band-muted: #d9d2c0;
+	--c-forest: #27302a;
+	--c-field: #fbf7ef;
+	--c-avatar: #e3d6b8;
+	--c-pill: #fbf7ef;
+	--c-pill-ink: #2b2a24;
+	--c-code-bg: #27302a;
 	--c-err: #b3261e;
 	--c-err-bg: #fbeae8;
+	/* Contour lines for the topographic background, on paper and on dark bands. */
+	--c-topo: rgb(138 122 85 / 0.22);
+	--c-topo-on-dark: rgb(255 255 255 / 0.07);
+	/* Paper grain behind the page. Off in dark mode, where it would only read as noise. */
+	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.3'/%3E%3C/svg%3E");
+
+	/* Handwritten labels (Caveat), on paper and on dark bands. */
+	--c-hand: #a6623f;
+	--c-hand-on-dark: #f3d48e;
+	/* The red dot on "Live" pills. */
+	--c-live: #c2412d;
+	/* Polaroid frames stay light in both themes, like real prints. */
+	--c-polaroid: #ffffff;
+	--c-polaroid-ink: #3d3a31;
+	--c-tape: rgb(233 220 185 / 0.85);
+	/* Hand-drawn leaves: three sage fills and a pencil line. */
+	--c-sprig-1: #8fa37f;
+	--c-sprig-2: #a3b48e;
+	--c-sprig-3: #7c9370;
+	--c-sprig-ink: #33402f;
 
 	/* Six sky/ground pairs used by the illustrated stream tiles. */
-	--tile-0-sky: #cfe0cc;
-	--tile-0-ground: #8db48f;
-	--tile-1-sky: #bbd6e0;
-	--tile-1-ground: #7fb0c4;
-	--tile-2-sky: #f3dfa6;
-	--tile-2-ground: #d9b95b;
-	--tile-3-sky: #ebd9b8;
-	--tile-3-ground: #c9a86a;
-	--tile-4-sky: #b5d9d6;
-	--tile-4-ground: #6db0ab;
-	--tile-5-sky: #d6e4b8;
-	--tile-5-ground: #9dba6a;
+	--tile-0-sky: #dfe3cf;
+	--tile-0-ground: #a3b48e;
+	--tile-1-sky: #d3dfdc;
+	--tile-1-ground: #8fa9a2;
+	--tile-2-sky: #f0dfb6;
+	--tile-2-ground: #d6b46a;
+	--tile-3-sky: #ecdcc2;
+	--tile-3-ground: #c49a6c;
+	--tile-4-sky: #d2ddd0;
+	--tile-4-ground: #7f9a86;
+	--tile-5-sky: #e5e3c6;
+	--tile-5-ground: #a9ac74;
 
 	color-scheme: light;
 }
 
 [data-theme='dark'] {
-	--c-bg: #101a14;
-	--c-surface: #18251d;
-	--c-surface2: #1e2d24;
-	--c-ink: #e8efe3;
-	--c-head: #f1f5ec;
-	--c-muted: #b7c6b8;
-	--c-primary: #9ed39b;
-	--c-on-primary: #0f1f14;
-	--c-link: #9ed39b;
-	--c-line: #35493b;
-	--c-band: #234a30;
-	--c-field: #101a14;
-	--c-avatar: #2c4636;
-	--c-pill: #f1c84b;
-	--c-pill-ink: #1f2a1e;
-	--c-code-bg: #0b130e;
+	--c-bg: #1c211d;
+	--c-surface: #252b26;
+	--c-surface2: #2b322c;
+	--c-ink: #ece4d4;
+	--c-head: #f5eee2;
+	--c-muted: #bdb5a3;
+	--c-primary: #a9c29a;
+	--c-on-primary: #1c211d;
+	--c-link: #b8cfa8;
+	--c-accent: #d9ac55;
+	--c-line: #3d463e;
+	--c-field-line: #7a8576;
+	--c-band: #34433a;
+	--c-forest: #141815;
+	--c-field: #1c211d;
+	--c-avatar: #3a4538;
+	--c-pill: #e7c77f;
+	--c-pill-ink: #2b2a24;
+	--c-code-bg: #141815;
 	--c-err: #ff9e94;
 	--c-err-bg: #3a1f1c;
+	--c-topo: rgb(255 255 255 / 0.06);
+	--grain: none;
+	--c-hand: #e3b874;
+	--c-polaroid: #ece4d4;
+	--c-sprig-1: #56694d;
+	--c-sprig-2: #62765a;
+	--c-sprig-3: #4c5e45;
+	--c-sprig-ink: #d4dcc8;
 
 	--tile-0-sky: #1f3328;
 	--tile-0-ground: #35563f;
@@ -98,7 +132,15 @@
 	--color-accent: var(--c-accent);
 	--color-on-accent: var(--c-on-accent);
 	--color-line: var(--c-line);
+	--color-field-line: var(--c-field-line);
 	--color-band: var(--c-band);
+	--color-forest: var(--c-forest);
+	--color-hand: var(--c-hand);
+	--color-hand-on-dark: var(--c-hand-on-dark);
+	--color-live: var(--c-live);
+	--color-polaroid: var(--c-polaroid);
+	--color-polaroid-ink: var(--c-polaroid-ink);
+	--color-tape: var(--c-tape);
 	--color-on-band: var(--c-on-band);
 	--color-band-muted: var(--c-band-muted);
 	--color-field: var(--c-field);
@@ -111,12 +153,46 @@
 
 	--font-sans: 'Nunito Sans', system-ui, sans-serif;
 	--font-display: 'Fraunces', Georgia, serif;
+	--font-hand: 'Caveat', 'Segoe Print', cursive;
 }
 
 @layer base {
 	body {
 		@apply bg-bg font-sans leading-[1.6] text-ink;
+		background-image: var(--grain);
 	}
+}
+
+/*
+ * Topographic contour lines behind a block. The SVG is used as a mask, so it only
+ * decides where colour shows; the colour comes from --topo-ink and follows the theme.
+ * The lines sit on a ::before layer at z-index -1, so the block isolates its own
+ * stacking context to keep that layer above the block's background, not behind the page.
+ */
+@utility topo {
+	position: relative;
+	isolation: isolate;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		background-color: var(--topo-ink, var(--c-topo));
+		mask: url('../lib/assets/topo.svg') 0 0 / 640px 640px repeat;
+	}
+}
+
+/* The same lines, faint white, for dark bands. */
+@utility topo-on-dark {
+	--topo-ink: var(--c-topo-on-dark);
+	@apply topo;
+}
+
+/* Small handwritten note above a heading. */
+@utility hand-note {
+	@apply font-hand text-[26px] leading-none font-semibold text-hand;
 }
 
 /* Shared building blocks, so pages don't repeat long class lists. */
@@ -137,7 +213,7 @@
 }
 
 @utility btn {
-	@apply inline-flex min-h-[52px] cursor-pointer items-center justify-center rounded-[14px] px-7 font-sans text-base font-bold no-underline;
+	@apply inline-flex min-h-[52px] cursor-pointer items-center justify-center rounded-full px-7 font-sans text-base font-bold no-underline;
 }
 
 @utility btn-primary {
@@ -148,10 +224,15 @@
 	@apply btn border-2 border-primary bg-transparent text-link;
 }
 
+/* Outline button on a dark band (band or forest sections). */
+@utility btn-outline-on-dark {
+	@apply btn border-2 border-on-band/60 bg-transparent text-on-band;
+}
+
 @utility btn-quiet {
 	@apply btn border-[1.5px] border-line bg-transparent text-ink;
 }
 
 @utility field {
-	@apply box-border min-h-[52px] w-full rounded-xl border-[1.5px] border-line bg-field px-4 font-sans text-[17px] text-ink;
+	@apply box-border min-h-[52px] w-full rounded-xl border-[1.5px] border-field-line bg-field px-4 font-sans text-[17px] text-ink;
 }

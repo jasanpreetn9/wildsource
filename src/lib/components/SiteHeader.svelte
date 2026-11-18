@@ -2,6 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import Logo from './Logo.svelte';
+	import Scribble from './Scribble.svelte';
 	import ThemeToggle from './ThemeToggle.svelte';
 
 	const links = [
@@ -23,7 +24,7 @@
 <header class="container-page flex flex-wrap items-center justify-between gap-x-8 gap-y-4 py-6">
 	<a
 		href={resolve('/')}
-		class="flex items-center gap-3 font-display text-2xl font-semibold text-head no-underline"
+		class="flex items-center gap-3 font-display text-[25px] font-semibold text-head no-underline"
 	>
 		<Logo />
 		<span>WildSource</span>
@@ -34,17 +35,18 @@
 			<a
 				href={link.href}
 				aria-current={active ? 'page' : undefined}
-				class={[
-					'border-b-[3px] py-2.5 text-ink no-underline',
-					active ? 'border-accent' : 'border-transparent'
-				]}
+				class="py-2.5 text-ink no-underline"
 			>
-				{link.label}
+				{#if active}
+					<Scribble>{link.label}</Scribble>
+				{:else}
+					{link.label}
+				{/if}
 			</a>
 		{/each}
 		<a
 			href={resolve('/add')}
-			class="inline-flex min-h-11 items-center rounded-xl bg-primary px-[22px] text-on-primary no-underline"
+			class="inline-flex min-h-11 items-center rounded-full bg-primary px-[22px] text-on-primary no-underline"
 		>
 			Add a camera
 		</a>
