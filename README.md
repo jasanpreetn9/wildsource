@@ -6,6 +6,10 @@ WildSource collects live nature cameras in one place: big projects like bird and
 
 > **Status:** early development, working towards v0.1. See the [roadmap](ROADMAP.md).
 
+[![The WildSource homepage: the heading "Watch nature with the people who keep the cameras on", with buttons to watch live or add a camera, beside three pinned photos of a swan, the Alps and a sunflower.](docs/images/homepage.jpg)](https://wildsource.jnagra.com)
+
+**Live site:** <https://wildsource.jnagra.com>
+
 ## What makes it different
 
 - **Nature only.** No cities, traffic or landmarks.
@@ -62,6 +66,7 @@ data/
   streams.seed.json      the stream catalog
   hosts.seed.json        the people and organisations who run the cameras
 docs/
+  images/                screenshots used in this README
   submission-rules.md    what streams are accepted
 src/
   lib/
@@ -107,6 +112,6 @@ WildSource is free to use, change and share for non-commercial purposes under th
 
 There is one exception:
 
-- **Photos in `src/lib/assets/photos/`** are © Jasanpreet Nagra, all rights reserved. They are not covered by the CC BY-NC-SA 4.0 License and may not be reused without permission. See [their license](src/lib/assets/photos/LICENSE.md).
+- **Photos in `src/lib/assets/photos/`**, and the **screenshots in `docs/images/`** that show them, are © Jasanpreet Nagra, all rights reserved. They are not covered by the CC BY-NC-SA 4.0 License and may not be reused without permission. See [their license](src/lib/assets/photos/LICENSE.md).
 
 The catalog data (stream names, habitats, regions and links) is free to reuse. Live streams belong to the people and organisations who run them. WildSource only shows them through their owners' own players.

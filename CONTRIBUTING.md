@@ -50,4 +50,4 @@ Short, imperative, present tense: `Add stream health check`. No special format r
 - Do not commit secrets, API keys or personal data.
 - Do not add streams or images you do not have the right to share.
 - By contributing, you agree that your work is licensed under the project's [CC BY-NC-SA 4.0 license](LICENSE).
-- Don't reuse the photos in `src/lib/assets/photos/`. They aren't covered by the CC BY-NC-SA 4.0 license (see [their license](src/lib/assets/photos/LICENSE.md)).
+- Don't reuse the photos in `src/lib/assets/photos/` or the screenshots in `docs/images/` that show them. They aren't covered by the CC BY-NC-SA 4.0 license (see [their license](src/lib/assets/photos/LICENSE.md)).
