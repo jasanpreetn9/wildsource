@@ -9,5 +9,9 @@
 	"routes": [{ "pattern": "wildsource.jnagra.com", "custom_domain": true }],
 	"observability": {
 		"enabled": true
-	}
+	},
+	// Lets Cloudflare build a preview of each pull request branch (`wrangler preview`).
+	// It can stay empty: assets and compatibility settings are shared with production.
+	// See https://developers.cloudflare.com/workers/previews/configuration/
+	"previews": {}
 }
