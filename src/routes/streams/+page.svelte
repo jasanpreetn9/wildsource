@@ -3,6 +3,7 @@
 	import { countries, countryOf, streams } from '#lib/catalog.ts';
 	import CtaBand from '#lib/components/CtaBand.svelte';
 	import StreamGrid from '#lib/components/StreamGrid.svelte';
+	import StreamMap from '#lib/components/StreamMap.svelte';
 	import { HABITATS } from '#lib/types.ts';
 
 	const PAGE_SIZE = 9;
@@ -14,6 +15,8 @@
 	let query = $state('');
 	let sort = $state<Sort>('live');
 	let limit = $state(PAGE_SIZE);
+	// The map only mounts in map view, so map tiles load only when someone asks for them.
+	let view = $state<'grid' | 'map'>('grid');
 
 	const matches = $derived.by(() => {
 		const q = query.trim().toLowerCase();
@@ -110,9 +113,28 @@
 			</div>
 		</div>
 	</div>
-	<span class="text-[15px] text-muted" aria-live="polite">
-		Showing {shown.length} of {matches.length} streams
-	</span>
+	<div class="flex flex-wrap items-center justify-between gap-3">
+		<span class="text-[15px] text-muted" aria-live="polite">
+			Showing {view === 'map' ? matches.length : shown.length} of {matches.length} streams
+		</span>
+		<div role="group" aria-label="View" class="flex gap-2">
+			{#each [['grid', 'Grid'], ['map', 'Map']] as const as [value, label] (value)}
+				<button
+					type="button"
+					aria-pressed={view === value}
+					onclick={() => (view = value)}
+					class={[
+						'min-h-11 cursor-pointer rounded-full border-[1.5px] px-[18px] font-sans text-[15px] font-bold',
+						view === value
+							? 'border-primary bg-primary text-on-primary'
+							: 'border-line bg-surface text-ink'
+					]}
+				>
+					{label}
+				</button>
+			{/each}
+		</div>
+	</div>
 </section>
 
 <section class="container-page flex flex-col gap-10 pt-6 pb-[72px]">
@@ -148,6 +170,8 @@
 				<a href={resolve('/add')} class="btn-quiet">Add a camera</a>
 			</div>
 		</div>
+	{:else if view === 'map'}
+		<StreamMap streams={matches} />
 	{:else}
 		<StreamGrid streams={shown} />
 		{#if shown.length < matches.length}

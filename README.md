@@ -22,7 +22,7 @@ WildSource collects live nature cameras in one place: big projects like bird and
 ## Features (v0.1)
 
 - Home page with streams that are live right now
-- Catalog with habitat and region filters, search and sorting
+- Catalog with habitat and region filters, search and sorting, as a grid or on a map
 - A page for each stream, with an embedded player and credit to its owner
 - "Add a camera" form that opens a pre-filled GitHub issue for review
 - The whole catalog as JSON at `/api/streams.json`
@@ -59,6 +59,7 @@ Run `pnpm check` and `pnpm lint` before opening a pull request. There are no tes
 
 - [SvelteKit](https://svelte.dev/docs/kit) with Svelte 5 and TypeScript
 - [Tailwind CSS](https://tailwindcss.com) v4. The design tokens (colours and fonts for both themes) are in `src/routes/layout.css`.
+- [MapLibre GL JS](https://maplibre.org) for the map, with free map tiles from [OpenFreeMap](https://openfreemap.org) (no API key). Pins use each stream's deliberately rough `location`.
 - Data comes from JSON files for now. A database (Supabase, with PostGIS) is planned for v0.2.
 
 ```

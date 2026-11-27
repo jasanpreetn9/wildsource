@@ -3,7 +3,7 @@
 ## v0.1: Catalog (MVP)
 
 - [x] Grid of embedded streams, with live thumbnails
-- [ ] Map of streams
+- [x] Map of streams
 - [x] Filter by habitat, plus search and sorting
 - [x] Filter by region (by country)
 - [ ] Filter by species (streams don't have species data yet)
