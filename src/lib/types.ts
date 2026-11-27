@@ -7,6 +7,11 @@ export interface Stream {
 	title: string;
 	habitat: Habitat;
 	region: string;
+	/**
+	 * A deliberately rough point for the map: a public place (park, town) rounded to
+	 * 1 decimal, about 10 km. Never the camera's real spot; nests get only a state or region.
+	 */
+	location: { lat: number; lng: number };
 	source: 'youtube' | 'twitch' | 'hls';
 	sourceUrl: string;
 	hostId: string;

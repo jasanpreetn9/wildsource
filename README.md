@@ -88,6 +88,7 @@ Until v0.2 adds a database, streams are added by editing `data/streams.seed.json
 3. Add the stream to `data/streams.seed.json`. `habitat` must be one of the values in `src/lib/types.ts`.
 4. Set `permission` to `embed-allowed`, or to `owner-approved` once the owner has said yes.
 5. Keep `region` general, especially for nests, and always **end it with the country**: `Montana, US`, `Etosha, Namibia`, or just `Panama`. The region filter reads the country from the last part.
+6. Set `location` to a **rough** point for the map: look up a public place near the camera (a park or town), never the camera itself, and round both numbers to 1 decimal (about 10 km), for example `{ "lat": 58.5, "lng": -155.1 }`. For nests, dens and at-risk species, use the middle of the state or region instead. Reviewers set this; never ask submitters for exact coordinates.
 
 Write the description yourself rather than copying the owner's text.
 
