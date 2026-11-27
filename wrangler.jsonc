@@ -1,0 +1,13 @@
+// Cloudflare Workers config. adapter-cloudflare fills in the Worker entry and the
+// static assets directory at build time, so they aren't set here.
+// See https://developers.cloudflare.com/workers/wrangler/configuration/
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "wildsource",
+	"compatibility_date": "2026-11-25",
+	// Serve the site on our own domain. Cloudflare manages the DNS record and certificate.
+	"routes": [{ "pattern": "wildsource.jnagra.com", "custom_domain": true }],
+	"observability": {
+		"enabled": true
+	}
+}
